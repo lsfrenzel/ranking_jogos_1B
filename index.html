@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking Jogos Digitais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin: 20px;
+            color: #333;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .table-container {
+            width: 100%;
+            max-width: 90%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #333;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 18px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        .rank-S { background: gold; font-weight: bold; }
+        .rank-A { background: silver; font-weight: bold; }
+        .rank-B { background: #a0c4ff; }
+        .rank-C { background: #b9fbc0; }
+        .rank-D { background: #ffca3a; }
+        .rank-E { background: #ff924c; }
+        .rank-Recuperacao { background: #ff595e; color: white; }
+
+        /* Melhorando a responsividade das imagens */
+        .rank-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #rankingTable tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            transform: scale(1.01);
+            transition: 0.3s ease-in-out;
+        }
+        .info-container {
+            max-width: 90%;
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .info-container h2 {
+            font-size: 20px;
+            color: #007BFF;
+        }
+
+        .info-container p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .info-container ul {
+            padding-left: 20px;
+        }
+
+        .table-container {
+            width: 100%;
+            max-width: 90%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #333;
+            color: white;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Ranking Jogos Digitais SENAI Morvan Figueiredo - 1°SEM-B</h1>
+    <button onclick="carregarDados()">Atualizar Ranking</button>
+
+    <div class="table-container">
+        <table id="rankingTable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>XP Técnico</th>
+                    <th>XP Socioemocional</th>
+                    <th>XP Total</th>
+                    <th>Ranking</th>
+                    <th>Insígnia</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="info-container">
+        <h2>📜 Como funciona o sistema?</h2>
+        <ul>
+            <li><strong>Cada atividade</strong> tem um valor de até 100 pontos.</li>
+            <li><strong>O XP Total</strong> do aluno é a média das notas obtidas.</li>
+            <li>O XP é dividido em **XP Técnico** e **XP Socioemocional**, avaliando habilidades técnicas e comportamentais.</li>
+            <li>O ranking é atualizado <strong>sempre que uma nova atividade é registrada.</strong></li>
+        </ul>
+
+        <h2>🏆 Ranks e XP</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>XP Total (Média)</th>
+                        <th>XP Técnico (mín.)</th>
+                        <th>XP Socioemocional (mín.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="rank-S"><td>S</td><td>100</td><td>50+</td><td>50+</td></tr>
+                    <tr class="rank-A"><td>A</td><td>90–99</td><td>45+</td><td>45+</td></tr>
+                    <tr class="rank-B"><td>B</td><td>80–89</td><td>40+</td><td>40+</td></tr>
+                    <tr class="rank-C"><td>C</td><td>70–79</td><td>35+</td><td>35+</td></tr>
+                    <tr class="rank-D"><td>D</td><td>60–69</td><td>30+</td><td>30+</td></tr>
+                    <tr class="rank-E"><td>E</td><td>50–59</td><td>25+</td><td>25+</td></tr>
+                    <tr class="rank-Recuperacao"><td>Recuperação</td><td>&lt;50</td><td>&lt;25</td><td>&lt;25</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>📌 **Se XP Técnico < 25, mesmo que o XP Total seja maior que 50, o aluno fica na recuperação até atingir o rank E.**</p>
+    </div>
+    <footer style="background-color: #333; color: white; text-align: center; padding: 20px;">
+    <p>Professores:</p>
+    <div style="display: flex; justify-content: center; gap: 20px;">
+        <div>
+            <p>Lucas Shimada Frenzel</p>
+            <a href="https://www.linkedin.com/in/lucas-shimada-frenzel-9a748533/" target="_blank" style="color: white;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30" alt="LinkedIn Lucas" />
+            </a>
+        </div>
+        <div>
+            <p>Gabriel Eduardo Almeida</p>
+            <a href="https://www.linkedin.com/in/gabriel-eduardo-almeida/" target="_blank" style="color: white;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30" alt="LinkedIn Gabriel" />
+            </a>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        async function carregarDados() {
+            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSDlHHoxJXbD-0smJP5LOPf-gnxLMbczeagED7DH-EH-WzwchKY2bZHhpgfxhZoZzd6gv8fCiOlYVM3/pub?gid=0&single=true&output=csv";
+
+            try {
+                const response = await fetch(url);
+                const data = await response.text();
+                const linhas = data.split("\n").slice(1);
+
+                const tableBody = document.querySelector("#rankingTable tbody");
+                tableBody.innerHTML = "";
+
+                linhas.forEach(linha => {
+                    if (linha.trim() === "") return;
+                    const [nome, xpTecnico, xpSocioemocional, xpTotal, ranking] = linha.split(",");
+
+                    let rankClass = "";
+                    let imgSrc = "";
+
+                    switch (ranking.trim()) {
+                        case "S": rankClass = "rank-S"; imgSrc = "S.png"; break;
+                        case "A": rankClass = "rank-A"; imgSrc = "A.png"; break;
+                        case "B": rankClass = "rank-B"; imgSrc = "B.png"; break;
+                        case "C": rankClass = "rank-C"; imgSrc = "C.png"; break;
+                        case "D": rankClass = "rank-D"; imgSrc = "D.png"; break;
+                        case "E": rankClass = "rank-E"; imgSrc = "E.png"; break;
+                        default: rankClass = "rank-Recuperacao"; imgSrc = "recuperacao.png"; break;
+                    }
+
+                    const row = `<tr class="${rankClass}">
+                        <td>${nome}</td>
+                        <td>${xpTecnico}</td>
+                        <td>${xpSocioemocional}</td>
+                        <td>${xpTotal}</td>
+                        <td>${ranking}</td>
+                        <td><img src="${imgSrc}" class="rank-img" alt="${ranking}"></td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error("Erro ao carregar os dados:", error);
+            }
+        }
+
+        carregarDados();
+    </script>
+</body>
+</html>
