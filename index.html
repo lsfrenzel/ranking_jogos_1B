@@ -158,11 +158,82 @@
             color: white;
             font-size: 18px;
         }
+        .badges-container {
+            margin: 30px 0;
+        }
+
+        .badges-container img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.5);
+        }
+        .etapas {
+            text-align: left;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.3);
+        }
+
+        .etapas ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .etapas li {
+            font-size: 18px;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .etapas li:last-child {
+            border-bottom: none;
+        }
+
+        .emoji {
+            font-size: 22px;
+        }
+        .ranking-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-transform: uppercase;
+    text-align: center;
+    background: linear-gradient(45deg, #ff9a00, #ff2d55);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px;
+}
+
+.ranking-title small {
+    font-size: 16px;
+    color: #ddd;
+    font-weight: normal;
+    display: block;
+    margin-top: 5px;
+}
+        
+
 
     </style>
 </head>
 <body>
-    <h1>Ranking Jogos Digitais SENAI Morvan Figueiredo - 1°SEM-B</h1>
+    <h1 class="ranking-title">
+        <span>🏆 Ranking Jogos Digitais</span>  
+        <br>  
+        <small>SENAI Morvan Figueiredo - 1° SEM-B</small>
+    </h1>
+    
     <button onclick="carregarDados()">Atualizar Ranking</button>
 
     <div class="table-container">
@@ -213,6 +284,27 @@
             </table>
         </div>
         <p>📌 **Se XP Técnico < 25, mesmo que o XP Total seja maior que 50, o aluno fica na recuperação até atingir o rank E.**</p>
+    </div>
+    <div class="badges-container">
+        <h2>🏅 Sistema de Badges</h2>
+        <img src="badges.png" alt="Badges do Curso de Jogos Digitais">
+    </div>
+    <div class="container">
+        <h1>🔥 Sistema de Badges – Jornada dos Futuros Game Developers! 🎮🏆</h1>
+        <p>Esta imagem ilustra um desafio épico dentro do Curso Técnico de Programação de Jogos Digitais! 🚀💡</p>
+        <p>Cada aluno embarca em uma jornada repleta de desafios, ganhando badges exclusivas a cada prova ou projeto concluído. São 4 badges por semestre, totalizando 2 anos de evolução – do nível <strong>Fundamentos</strong> ao tão sonhado <strong>Expert</strong>! 💥</p>
+        
+        <div class="etapas">
+            <h2>🎯 As Etapas da Jornada:</h2>
+            <ul>
+                <li class="emoji">✅ <strong>Missão Inicial</strong> – Primeiro passo na aventura!</li>
+                <li class="emoji">✅ <strong>Teste de Habilidades</strong> – Hora de provar o que aprendeu!</li>
+                <li class="emoji">✅ <strong>Missão Avançada</strong> – Superando desafios ainda maiores!</li>
+                <li class="emoji">✅ <strong>Desafio Final</strong> – O grande teste para fechar com chave de ouro!</li>
+            </ul>
+        </div>
+        
+        <p>Cada badge representa uma conquista única, incentivando os alunos a evoluírem como verdadeiros criadores de jogos! 🕹️👾 Quem será o mestre do ranking? 🚀🔥</p>
     </div>
     <footer style="background-color: #333; color: white; text-align: center; padding: 20px;">
     <p>Professores:</p>
