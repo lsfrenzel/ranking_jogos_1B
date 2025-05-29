@@ -5,211 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranking Jogos Digitais</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #39ff14; /* Neon verde */
+}
 
-        h1 {
-            font-size: 22px;
-            margin: 20px;
-            color: #333;
-        }
+h1 {
+    font-size: 22px;
+    margin: 20px;
+    color: #00ffff; /* Neon azul */
+}
 
-        button {
-            padding: 12px 20px;
-            background: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            margin: 10px;
-            transition: 0.3s;
-        }
+button {
+    padding: 12px 20px;
+    background: #ff00ff;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
 
-        button:hover {
-            background: #0056b3;
-        }
+button:hover {
+    background: #ff33cc;
+}
 
-        .table-container {
-            width: 100%;
-            max-width: 90%;
-            overflow-x: auto;
-        }
+.table-container {
+    width: 100%;
+    max-width: 90%;
+    overflow-x: auto;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            min-width: 600px;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #111;
+    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.2);
+    border-radius: 8px;
+    min-width: 600px;
+}
 
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: center;
-        }
+th, td {
+    padding: 12px;
+    border: 1px solid #333;
+    text-align: center;
+    color: #000000; /* Neon ciano */
+}
 
-        th {
-            background: #333;
-            color: white;
-            font-size: 18px;
-        }
+th {
+    background: #222;
+    color: #ff00ff; /* Neon rosa */
+    font-size: 18px;
+}
 
-        /* Responsividade para telas menores */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 18px;
-            }
+@media (max-width: 768px) {
+    h1 {
+        font-size: 18px;
+    }
 
-            table {
-                font-size: 14px;
-            }
+    table {
+        font-size: 14px;
+    }
 
-            th, td {
-                padding: 8px;
-            }
+    th, td {
+        padding: 8px;
+    }
 
-            button {
-                font-size: 14px;
-                padding: 10px;
-            }
-        }
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
 
-        .rank-S { background: gold; font-weight: bold; }
-        .rank-A { background: silver; font-weight: bold; }
-        .rank-B { background: #a0c4ff; }
-        .rank-C { background: #b9fbc0; }
-        .rank-D { background: #ffca3a; }
-        .rank-E { background: #ff924c; }
-        .rank-Recuperacao { background: #ff595e; color: white; }
+.rank-S { background: gold; font-weight: bold; }
+.rank-A { background: silver; font-weight: bold; }
+.rank-B { background: #a0c4ff; }
+.rank-C { background: #b9fbc0; }
+.rank-D { background: #ffca3a; }
+.rank-E { background: #ff924c; }
+.rank-Recuperacao { background: #ff595e; color: white; }
 
-        /* Melhorando a responsividade das imagens */
-        .rank-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-        }
+.rank-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
 
-        #rankingTable tbody tr:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-            transform: scale(1.01);
-            transition: 0.3s ease-in-out;
-        }
-        .info-container {
-            max-width: 90%;
-            background: white;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: left;
-        }
+#rankingTable tbody tr:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+    transform: scale(1.01);
+    transition: 0.3s ease-in-out;
+}
 
-        .info-container h2 {
-            font-size: 20px;
-            color: #007BFF;
-        }
+.info-container {
+    max-width: 90%;
+    background: #111;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 255, 255, 0.2);
+    text-align: left;
+    color: #39ff14;
+}
 
-        .info-container p {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #333;
-        }
+.info-container h2 {
+    font-size: 20px;
+    color: #00ffff;
+}
 
-        .info-container ul {
-            padding-left: 20px;
-        }
+.info-container p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ccffcc;
+}
 
-        .table-container {
-            width: 100%;
-            max-width: 90%;
-            overflow-x: auto;
-        }
+.info-container ul {
+    padding-left: 20px;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            min-width: 600px;
-        }
+.badges-container {
+    margin: 30px 0;
+}
 
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: center;
-        }
+.badges-container img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(255, 0, 255, 0.4);
+}
 
-        th {
-            background: #333;
-            color: white;
-            font-size: 18px;
-        }
-        .badges-container {
-            margin: 30px 0;
-        }
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #111;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.3);
+    color: #00ffcc;
+}
 
-        .badges-container img {
-            width: 100%;
-            max-width: 800px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.5);
-        }
-        .etapas {
-            text-align: left;
-            background: #ffffff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.3);
-        }
+.etapas {
+    text-align: left;
+    background: #111;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.3);
+    color: #00ffcc;
+}
 
-        .etapas ul {
-            list-style: none;
-            padding: 0;
-        }
+.etapas ul {
+    list-style: none;
+    padding: 0;
+}
 
-        .etapas li {
-            font-size: 18px;
-            padding: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
+.etapas li {
+    font-size: 18px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
 
-        .etapas li:last-child {
-            border-bottom: none;
-        }
+.etapas li:last-child {
+    border-bottom: none;
+}
 
-        .emoji {
-            font-size: 22px;
-        }
-        .ranking-title {
+.emoji {
+    font-size: 22px;
+}
+
+.ranking-title {
     font-size: 28px;
     font-weight: bold;
-    color: #ff00ee;
     text-transform: uppercase;
     text-align: center;
-    background: linear-gradient(45deg, #db04cd, #ff2d55);
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     padding: 10px;
@@ -217,13 +198,11 @@
 
 .ranking-title small {
     font-size: 16px;
-    color: #ddd;
+    color: #aaa;
     font-weight: normal;
     display: block;
     margin-top: 5px;
 }
-        
-
 
     </style>
 </head>
